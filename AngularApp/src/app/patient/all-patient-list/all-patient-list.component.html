@@ -1,8 +1,9 @@
 <mat-toolbar class="mat-elevation-z8" style="color: white;background: linear-gradient(45deg, #64e2e6, #3a408b);">
   <img style="height:100%;  margin-right:5%; cursor:pointer" routerLink="/Admin-dashboard" src="../../../assets/navbar/logo.png"/>
-
+  <h1 style="font-size: 7vh; color: rgb(244, 38, 34); padding-left: 14vw; font-family: Lemon; letter-spacing: 2vw;" class="x-sign" >LIFE CARE</h1>
   <span class="spacer"></span>
-  <button (click)="logout()" class="btn" style="background-color: transparent; color:white; font-size:1.5rem;">Logout</button>
+  <p class="txt-time" style="padding-top: 1%;">  {{time | date:'mediumTime'}} 
+  <button (click)="logout()" class="btn" style="background-color: transparent; color:white; font-size:1.5rem;"><mat-icon>power_settings_new</mat-icon></button>
 
 </mat-toolbar>
 
@@ -83,18 +84,20 @@
       <div class="row" style="padding-bottom:6px; padding-top:6px" *ngFor="let d of filterdData |orderBy | paginate:{itemsPerPage:5, currentPage:p}">
         <div class="col-3 d-flex align-items-center ">
           <img class="patientImage d-flex align-items-center " src="{{ d.displayImage }}"/>
-          <h4 style="margin-left: 5%; font-size:1.3rem; font-family:'Abas'" >{{ d.name }}</h4>
+          <h4 style="margin-left: 5%; font-size:1.3rem; font-family:'Times New Roman'" >{{ d.name }}</h4>
 
         </div>
         <div class="col-3 d-flex align-items-center d-flex justify-content-center">
-          <h4 style="font-size:1.3rem; font-family:'Abas'">{{ d.email }}</h4>
+          <h4 style="font-size:1.3rem; font-family:'Times New Roman'">{{ d.email }}</h4>
         </div>
         <div class="col-3 d-flex align-items-center d-flex justify-content-center">
-          <h4 style="font-size:1.3rem; font-family:'Abas'">{{ d.gender }}</h4>
+          <h4 style="font-size:1.3rem; font-family:'Times New Roman'">{{ d.gender }}</h4>
 
         </div>
         <div class="col-2 d-flex align-items-center d-flex justify-content-center" >
-      <h4 style="font-size:1.3rem; font-family:'Abas'">{{ d.subscription }}</h4>
+
+        <button class="btn btn-outline-info" routerLink="/patient-bill/{{ d._id }}">Bill</button>
+
         </div>
         <div class="col-1 d-flex align-items-center d-flex justify-content-center">
           <button class="btn btn-outline-primary" routerLink="/Admin-show-patient-details/{{ d._id }}">View</button>
